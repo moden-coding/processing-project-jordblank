@@ -13,16 +13,18 @@ public class App extends PApplet{
     }
     public void setup(){
         background(192, 178, 207);
-        x = random(100,500);
-        y = random(100,500);
-        //x = x * 10 + 150;
-        //y= y * 10 + 150;
+        x = (int)random(0,4);
+        y = (int)random(0,4);
+        x = x * 100 + 150;
+        y= y * 100 + 150;
         //image = loadImage("heifer.jpg");
         //image.resize(140, 140);
     }
 
 
     public void draw(){
+        
+       
         //image(image, 105, 105);
         stroke(108, 89, 128);
         strokeWeight(1);
