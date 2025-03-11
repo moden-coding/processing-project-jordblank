@@ -24,6 +24,7 @@ public class App extends PApplet{
         y = (int)random(0,4);
         x = x * 100 + 150;
         y= y * 100 + 150;
+        textSize (25);
         //image = loadImage("heifer.jpg");
         //image.resize(140, 140);
     }
@@ -42,6 +43,8 @@ public class App extends PApplet{
         line(100, 300, 500, 300);
         line(100, 400, 500, 400);
         ellipse(x, y, 75, 75);
+        text("Score: " + count, 100, 520);
+        
 
         //if (scene = 0){
             
