@@ -31,6 +31,7 @@ public class App extends PApplet{
 
 
     public void draw(){
+        background(192, 178, 207);
         //image(x, y, 75, 65,);
         stroke(108, 89, 128);
         strokeWeight(1);
