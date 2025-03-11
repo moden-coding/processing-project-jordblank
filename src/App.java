@@ -2,6 +2,13 @@ import processing.core.*;
 public class App extends PApplet{
     float x;
     float y;
+    //float mousePressed = 0;
+    // float mouseX = 0;
+    // float mouseY = 0;
+    float count = 0;
+    int scene = 0;
+    int distance = 0;
+    int radius = 38;
     public static void main(String[] args)  {
         PApplet.main("App");
     }
@@ -23,9 +30,7 @@ public class App extends PApplet{
 
 
     public void draw(){
-        
-       
-        //image(image, 105, 105);
+        //image(x, y, 75, 65,);
         stroke(108, 89, 128);
         strokeWeight(1);
         rect (100,100,400,400);
@@ -38,6 +43,37 @@ public class App extends PApplet{
         line(100, 400, 500, 400);
         ellipse(x, y, 75, 75);
 
+        //if (scene = 0){
+            
+        //}
+        //else if (scene = 1){
+
+        //}
+        //else{
+
+        //}
+
+    }
+    public void mousePressed(){
+        distance = (int)dist(x, y, mouseX, mouseY);
+        if (distance <= radius){
+            x = (int)random(0,4);
+            y = (int)random(0,4);
+            x = x * 100 + 150;
+            y= y * 100 + 150;
+            //mousePressed = x;
+            count++;
+            System.out.println("mouse x" + mouseX + "mousey" + mouseY);
+            System.out.println("x" + x + "y" + y);
+        }
+            scene++;
+            if(scene == 3){
+                scene = 1;
+            }
+           
+            System.out.println(count);
+        }
+
     }
     
-}
+//}
