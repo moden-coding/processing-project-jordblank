@@ -9,7 +9,7 @@ public class App extends PApplet{
     float count = 0;
     int scene = 0;
     int distance = 0;
-    int radius = 38;
+    int radius = 80;
     float speed = 1;
     public static void main(String[] args)  {
         PApplet.main("App");
@@ -22,13 +22,14 @@ public class App extends PApplet{
     }
     public void setup(){
         background(192, 178, 207);
+        image = loadImage("heifer.png");
+        image.resize(140, 100);
         x = (int)random(0,4);
         y = (int)random(0,4);
-        x = x * 100 + 150;
-        y= y * 100 + 150;
+        x = x * 100 + 100;
+        y= y * 100 + 115;
         textSize (25);
-        image = loadImage("heifer.png");
-        //image.resize(140, 100);
+        
     }
 
 
@@ -44,8 +45,9 @@ public class App extends PApplet{
         line(100, 200, 500, 200);
         line(100, 300, 500, 300);
         line(100, 400, 500, 400);
+        //image(image, x, y, 65, 90);
         image(image, x, y, 93, 80);
-        ellipse(x, y, 75, 75);
+        //ellipse(x, y, 75, 75);
         text("Score: " + count, 100, 520);
         
         
@@ -66,13 +68,13 @@ public class App extends PApplet{
         if (distance <= radius){
             x = (int)random(0,4);
             y = (int)random(0,4);
-            x = x * 100 + 150;
-            y= y * 100 + 150;
+            x = x * 100 + 100;
+            y= y * 100 + 115;
             //mousePressed = x;
             count++;
             System.out.println("mouse x" + mouseX + "mousey" + mouseY);
             System.out.println("x" + x + "y" + y);
-            x += speed;
+            //x += speed;
         }
             scene++;
             if(scene == 3){
