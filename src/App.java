@@ -1,5 +1,6 @@
 import processing.core.*; 
 public class App extends PApplet{
+    PImage image;
     float x;
     float y;
     //float mousePressed = 0;
@@ -9,11 +10,12 @@ public class App extends PApplet{
     int scene = 0;
     int distance = 0;
     int radius = 38;
+    float speed = 1;
     public static void main(String[] args)  {
         PApplet.main("App");
     }
 
-    //PImage image;
+    
     public void settings(){
         size(600, 600);
         
@@ -25,14 +27,13 @@ public class App extends PApplet{
         x = x * 100 + 150;
         y= y * 100 + 150;
         textSize (25);
-        //image = loadImage("heifer.jpg");
-        //image.resize(140, 140);
+        image = loadImage("heifer.png");
+        //image.resize(140, 100);
     }
 
 
     public void draw(){
         background(192, 178, 207);
-        //image(x, y, 75, 65,);
         stroke(108, 89, 128);
         strokeWeight(1);
         rect (100,100,400,400);
@@ -43,8 +44,10 @@ public class App extends PApplet{
         line(100, 200, 500, 200);
         line(100, 300, 500, 300);
         line(100, 400, 500, 400);
+        image(image, x, y, 93, 80);
         ellipse(x, y, 75, 75);
         text("Score: " + count, 100, 520);
+        
         
 
         //if (scene = 0){
@@ -69,6 +72,7 @@ public class App extends PApplet{
             count++;
             System.out.println("mouse x" + mouseX + "mousey" + mouseY);
             System.out.println("x" + x + "y" + y);
+            x += speed;
         }
             scene++;
             if(scene == 3){
@@ -76,6 +80,7 @@ public class App extends PApplet{
             }
            
             System.out.println(count);
+        
         }
 
     }
