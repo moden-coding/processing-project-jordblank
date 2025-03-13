@@ -3,14 +3,15 @@ public class App extends PApplet{
     PImage image;
     float x;
     float y;
+    boolean visible;
     //float mousePressed = 0;
     // float mouseX = 0;
     // float mouseY = 0;
     float count = 0;
     int scene = 0;
     int distance = 0;
-    int radius = 80;
     float speed = 1;
+    int lives = 3;
     public static void main(String[] args)  {
         PApplet.main("App");
     }
@@ -26,8 +27,8 @@ public class App extends PApplet{
         image.resize(140, 100);
         x = (int)random(0,4);
         y = (int)random(0,4);
-        x = x * 100 + 100;
-        y= y * 100 + 115;
+        x = x * 100 + 105;
+        y= y * 100 + 110;
         textSize (25);
         
     }
@@ -49,6 +50,10 @@ public class App extends PApplet{
         image(image, x, y, 93, 80);
         //ellipse(x, y, 75, 75);
         text("Score: " + count, 100, 520);
+       //if visibleIsTrue{
+            
+        //}
+
         
         
 
@@ -65,23 +70,29 @@ public class App extends PApplet{
     }
     public void mousePressed(){
         distance = (int)dist(x, y, mouseX, mouseY);
-        if (distance <= radius){
+        if (mouseX > x && mouseX < 93 + x && mouseY > y && mouseY < 75 + y){
             x = (int)random(0,4);
             y = (int)random(0,4);
-            x = x * 100 + 100;
-            y= y * 100 + 115;
+            x = x * 100 + 105;
+            y= y * 100 + 110;
             //mousePressed = x;
+             //x += speed;
             count++;
-            System.out.println("mouse x" + mouseX + "mousey" + mouseY);
-            System.out.println("x" + x + "y" + y);
-            //x += speed;
+        }
+        else (distance < 93, 75){
+            lives--;
+        }
+        if (lives == 0){
+            text("Game Over!", 500, 520);
+
         }
             scene++;
             if(scene == 3){
                 scene = 1;
             }
-           
-            System.out.println(count);
+        System.out.println("mouse x" + mouseX + "mousey" + mouseY);
+        System.out.println("x" + x + "y" + y);
+        System.out.println(count);
         
         }
 
