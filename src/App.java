@@ -10,6 +10,9 @@ public class App extends PApplet {
     int distance = 0;
     float speed = 1;
     int lives = 3;
+    int FrameOnClick;
+    // int frameCount;
+    // int frameRate;
 
     public static void main(String[] args) {
         PApplet.main("App");
@@ -26,23 +29,43 @@ public class App extends PApplet {
         image.resize(140, 100);
         newHeifer();
         textSize(25);
+        frameRate = 700;
 
     }
 
     public void draw() {
+        
+        System.out.println(frameCount);
+
+        if(frameCount > 410 && frameCount < 470){
+            disappear();
+            frameCount = 0;
+        }
+        else if(frameCount > 100){
+            newHeifer();
+            lives--;
+            frameCount = 0;
+        }
+        if (lives == 0){
+            scene = 2;
+            showEnd();
+        }
+
+
        
-      
+    
         if (scene == 0) {
             showStart();
             
         }else if(scene == 1){
+           
           gameBoard();
         }else if(scene == 2){
             System.out.println("game over");
             text("Game Over!", 500, 520);
             showEnd();
         }
-        
+        disappear();
     }
 
     public void gameBoard(){
@@ -61,10 +84,11 @@ public class App extends PApplet {
         textSize(30);
         text("Score: " + count, 100, 530);
         text("Lives: " + lives, 410, 530);
-       
+    
     }
 
     public void showStart() {
+        lives = 3;
         background(192, 178, 207);
         textSize(50);
         fill(108, 89, 128);
@@ -95,6 +119,18 @@ public class App extends PApplet {
     text(" Click to restart", 240, 320);
 
     }
+    public void disappear(){
+        if (visible == true){
+            newHeifer();
+            // speed++;
+
+        }
+        if(frameCount == 71){
+            visible = false;
+            x = -100;
+            y = -100;
+        }
+        }
 
     public void mousePressed() {
         distance = (int) dist(x, y, mouseX, mouseY);
@@ -102,16 +138,18 @@ public class App extends PApplet {
 
         if (scene == 0){
             scene = 1;
+            frameCount = 0;
         }else if (scene == 1){
             
             if (mouseX > x && mouseX < 93 + x && mouseY > y && mouseY < 75 + y ) {
                 System.out.println("clicked correctly");
                 newHeifer();
                 count++;
+                frameCount = 0;
             } else{
                 System.out.println("lose a life");
                 lives--;
-                if (lives == 0) {
+                if (lives <= 0) {
                     scene = 2;
                 }
             }
@@ -139,5 +177,5 @@ public class App extends PApplet {
 
 
 }
-
+    
 // }
