@@ -102,8 +102,8 @@ public class App extends PApplet {
         text("Instructions:", 450, 30);
         textSize(15);
         text("1. Hit the heifer as it appears", 410, 50);
-        text("2. The heifer dissapears faster", 410, 75);
-        text("as your score increases", 410, 90);
+        text("2. The heifer dissapears ", 410, 75);
+        text("after a few seconds", 410, 90);
         text("3. You have three lives", 410, 115);
         line(400, 0, 400, 125);
         line(400, 125, 600, 125);
